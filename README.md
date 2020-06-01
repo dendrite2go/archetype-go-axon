@@ -11,7 +11,8 @@ projects with the following characteristics:
 * High Availability
 * Scalability
 
-On top of that, wouldn't it be fun to be able to start a project as a monolithic application and have it evolve into a collection of micro-services that is integrated into a service mesh architecture?
+On top of that, wouldn't it be fun to be able to start a project as a monolithic application
+and have it evolve into a collection of micro-services that is integrated into a service mesh architecture?
 
 The components that this project aims to combine are:
 * The Go language (for high-performance, type safety and gRPC integration with Axon Server)
