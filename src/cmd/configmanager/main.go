@@ -14,9 +14,9 @@ import (
 	ssh "golang.org/x/crypto/ssh"
 	grpc "google.golang.org/grpc"
 
-	grpc_example "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/grpc/example"
-	trusted "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/trusted"
-	utils "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/utils"
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
+	trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
+	utils "github.com/dendrite2go/archetype-go-axon/src/pkg/utils"
 )
 
 func main() {

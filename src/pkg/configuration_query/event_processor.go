@@ -3,10 +3,10 @@ package configuration_query
 import (
 	log "log"
 
-	authentication "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/authentication"
-	grpc_example "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/grpc/example"
-	trusted "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/trusted"
-	axon_utils "github.com/jeroenvanmaanen/dendrite/src/pkg/axon_utils"
+	authentication "github.com/dendrite2go/archetype-go-axon/src/pkg/authentication"
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
+	trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
+	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 )
 
 // Redeclare event types, so that they can be extended with event handler methods.

@@ -3,7 +3,7 @@ package cache_utils
 import (
 	time "time"
 
-	axon_utils "github.com/jeroenvanmaanen/dendrite/src/pkg/axon_utils"
+	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 	go_cache "github.com/patrickmn/go-cache"
 )
 

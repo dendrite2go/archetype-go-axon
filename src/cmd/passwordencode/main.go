@@ -4,7 +4,7 @@ import (
 	log "log"
 	os "os"
 
-	authentication "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/authentication"
+	authentication "github.com/dendrite2go/archetype-go-axon/src/pkg/authentication"
 )
 
 func main() {

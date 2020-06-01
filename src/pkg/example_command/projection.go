@@ -3,8 +3,8 @@ package example_command
 import (
 	log "log"
 
-	grpc_example "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/grpc/example"
-	axon_utils "github.com/jeroenvanmaanen/dendrite/src/pkg/axon_utils"
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
+	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 )
 
 // Redeclare event types, so that they can be extended with event handler methods.

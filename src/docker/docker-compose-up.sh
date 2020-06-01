@@ -13,7 +13,7 @@ COMPOSE="$(cd "$(dirname "$0")" ; pwd)"
 SRC="$(dirname "${COMPOSE}")"
 PROJECT="$(dirname "${SRC}")"
 PRESENT="${PROJECT}/src/present"
-DOCKER_REPOSITORY='jeroenvm'
+DOCKER_REPOSITORY='dendrite2go'
 
 : ${SILENT:=true}
 . "${SRC}/bin/verbose.sh"

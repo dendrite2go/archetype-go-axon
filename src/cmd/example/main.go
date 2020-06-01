@@ -6,16 +6,16 @@ import (
 
 	uuid "github.com/google/uuid"
 
-	authentication "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/authentication"
-	cache_utils "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/cache_utils"
-	configuration_query "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/configuration_query"
-	example_api "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/example_api"
-	example_command "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/example_command"
-	example_query "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/example_query"
-	trusted "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/trusted"
-	utils "github.com/jeroenvanmaanen/archetype-go-axon/src/pkg/utils"
-	axon_utils "github.com/jeroenvanmaanen/dendrite/src/pkg/axon_utils"
-	axon_server "github.com/jeroenvanmaanen/dendrite/src/pkg/grpc/axon_server"
+	authentication "github.com/dendrite2go/archetype-go-axon/src/pkg/authentication"
+	cache_utils "github.com/dendrite2go/archetype-go-axon/src/pkg/cache_utils"
+	configuration_query "github.com/dendrite2go/archetype-go-axon/src/pkg/configuration_query"
+	example_api "github.com/dendrite2go/archetype-go-axon/src/pkg/example_api"
+	example_command "github.com/dendrite2go/archetype-go-axon/src/pkg/example_command"
+	example_query "github.com/dendrite2go/archetype-go-axon/src/pkg/example_query"
+	trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
+	utils "github.com/dendrite2go/archetype-go-axon/src/pkg/utils"
+	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
+	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
 )
 
 func main() {
