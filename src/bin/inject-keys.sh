@@ -34,7 +34,7 @@ fi
 
     echo ">>> Secrets"
     cat "${SRC}/etc/secrets-local.yaml" \
-      | docker run -i karlkfi/yq -r '.users | to_entries[] | .key + " " + .value.secret' \
+      | docker run --rm -i karlkfi/yq -r '.users | to_entries[] | .key + " " + .value.secret' \
       | while read USER_ID PASSWORD_ENCRYPTED
         do
           log ">>> ${USER_ID}: ${PASSWORD_ENCRYPTED}"
@@ -45,7 +45,7 @@ fi
     then
       echo ">>> Properties"
       cat "${SRC}/etc/application-local.yaml" \
-        | docker run -i karlkfi/yq -r --stream \
+        | docker run --rm -i karlkfi/yq -r --stream \
             '. | select(length > 1) | .[0][0] + (reduce .[0][1:][] as $item ("" ; . + "." + ($item | tostring))) + "=" + .[1]'
     fi
 
