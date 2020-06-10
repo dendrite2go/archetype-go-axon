@@ -29,6 +29,12 @@ then
   shift
 fi
 
+DO_CLOBBER='true'
+if [[ ".$1" = '.--no-clobber' ]]
+then
+  DO_CLOBBER='false'
+fi
+
 : ${AXON_SERVER_PORT=8024}
 : ${API_SERVER_PORT=8181}
 : ${ENSEMBLE_NAME=example}
@@ -101,8 +107,14 @@ function waitForDockerComposeReady() {
     (
         cd src/docker
         docker-compose -p "${ENSEMBLE_NAME}" rm --stop --force
-        docker volume rm -f example_axon-data
     )
+
+    if "${DO_CLOBBER}"
+    then
+      docker volume rm -f example_axon-data
+      docker volume rm -f example_axon-eventdata
+      docker volume rm -f example_elastic-search-data
+    fi
 
     src/docker/docker-compose-up.sh "${FLAGS_INHERIT[@]}" "$@"
 )

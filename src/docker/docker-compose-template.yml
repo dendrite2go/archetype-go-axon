@@ -20,7 +20,11 @@ services:
     -
       type: volume
       source: axon-data
-      target: /opt/axonserver/data
+      target: /data
+    -
+      type: volume
+      source: axon-eventdata
+      target: /eventdata
   example-command-api:
     image: ${DOCKER_REPOSITORY}/archetype-go-axon
     working_dir: ${PROJECT}
@@ -85,6 +89,7 @@ services:
 
 volumes:
   axon-data:
+  axon-eventdata:
   elastic-search-data:
   ${NIX_STORE_VOLUME}:
     external: true

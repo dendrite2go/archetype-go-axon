@@ -49,7 +49,7 @@ Other features:
   * Todo: supply JWT in headers/metadata rather than payload
 * Cache projections
 * Extracted reusable code into a proper library that can be included as a dependency:
-  [dendrite](https://github.com/jeroenvanmaanen/dendrite)
+  [dendrite](https://github.com/dendite2go/dendrite)
 
 After that:
 
@@ -63,7 +63,7 @@ After that:
 compiled commands
 * Provide CMD or PowerShell script to run Docker-in-Docker for Windows users
 
-This project started as a clone of [archetype-nix-go](https://github.com/jeroenvanmaanen/archetype-nix-go).
+This project started as a clone of [archetype-nix-go](https://github.com/dendrite2go/archetype-nix-go).
 To setup [Golang](https://golang.org) in combination with [Nix](https://nixos.org/nix/), I mostly followed [Golang Demo](https://github.com/MatrixAI/Golang-Demo)
 by _Roger Qiu_. Any flaws are of course my own.
 
