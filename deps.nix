@@ -37,6 +37,15 @@
     };
   }
   {
+    goPackagePath = "github.com/dendrite2go/dendrite";
+    fetch = {
+      type = "git";
+      url = "https://github.com/dendrite2go/dendrite";
+      rev = "v0.0.14";
+      sha256 = "0qws3g257cgf9wly4y0232kyy9y9ypxip3qvd8l97gc409sc9d3l";
+    };
+  }
+  {
     goPackagePath = "github.com/elastic/go-elasticsearch";
     fetch = {
       type = "git";
