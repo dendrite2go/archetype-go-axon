@@ -15,13 +15,14 @@ import (
 	jwt "github.com/pascaldekloe/jwt"
 	grpc "google.golang.org/grpc"
 
-	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
 	authentication "github.com/dendrite2go/dendrite/src/pkg/authentication"
 	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
 	grpc_config "github.com/dendrite2go/dendrite/src/pkg/grpc/configuration"
 	trusted "github.com/dendrite2go/dendrite/src/pkg/trusted"
 	utils "github.com/dendrite2go/dendrite/src/pkg/utils"
+
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
 )
 
 type GreeterServer struct {

@@ -9,10 +9,11 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	uuid "github.com/google/uuid"
 
-	elastic_search_utils "github.com/dendrite2go/archetype-go-axon/src/pkg/elastic_search_utils"
-	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
 	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
+
+	elastic_search_utils "github.com/dendrite2go/archetype-go-axon/src/pkg/elastic_search_utils"
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
 )
 
 func HandleQueries(host string, port int) (clientConnection *axon_utils.ClientConnection) {

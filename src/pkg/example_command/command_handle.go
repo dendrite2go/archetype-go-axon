@@ -6,12 +6,13 @@ import (
 
 	proto "github.com/golang/protobuf/proto"
 
-	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
 	authentication "github.com/dendrite2go/dendrite/src/pkg/authentication"
 	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 	configuration_command "github.com/dendrite2go/dendrite/src/pkg/configuration_command"
 	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
 	trusted "github.com/dendrite2go/dendrite/src/pkg/trusted"
+
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
 )
 
 func HandleCommands(host string, port int) *axon_utils.ClientConnection {
