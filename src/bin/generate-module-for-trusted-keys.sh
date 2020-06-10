@@ -12,9 +12,13 @@ mkdir -p "$(dirname "${MODULE}")"
 
 echo 'package trusted
 
+import (
+    dendrite_trusted "github.com/dendrite2go/dendrite/src/pkg/trusted"
+    grpc_config "github.com/dendrite2go/dendrite/src/pkg/grpc/configuration"
+)
+
 func Init() {
-    trustedKeys = map[string]string{}
-    keyManagers = map[string]string{}' > "${MODULE}"
+    var publicKey grpc_config.PublicKey' > "${MODULE}"
 (
   cd "${PROJECT}" || exit 1
   N=0
@@ -36,8 +40,12 @@ func Init() {
       N=$((${N} + 1))
       NAME="key-${N}"
     fi
-    echo "    trustedKeys[\"${NAME}\"] = \"${KEY}\""
-    echo "    keyManagers[\"${NAME}\"] = trustedKeys[\"${NAME}\"]"
+    echo "    publicKey = grpc_config.PublicKey{"
+    echo "        Name: \"${NAME}\","
+    echo "        PublicKey: \"${KEY}\","
+    echo "    }"
+    echo "    dendrite_trusted.UnsafeSetTrustedKey(&publicKey)"
+    echo "    dendrite_trusted.UnsafeSetKeyManager(&publicKey)"
   done >> "${MODULE}"
 )
 echo '}' >> "${MODULE}"

@@ -15,11 +15,13 @@ import (
 	jwt "github.com/pascaldekloe/jwt"
 	grpc "google.golang.org/grpc"
 
-	authentication "github.com/dendrite2go/archetype-go-axon/src/pkg/authentication"
 	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
-	trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
+	authentication "github.com/dendrite2go/dendrite/src/pkg/authentication"
 	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
+	grpc_config "github.com/dendrite2go/dendrite/src/pkg/grpc/configuration"
+	trusted "github.com/dendrite2go/dendrite/src/pkg/trusted"
+	utils "github.com/dendrite2go/dendrite/src/pkg/utils"
 )
 
 type GreeterServer struct {
@@ -194,7 +196,11 @@ func (s *GreeterServer) Search(query *grpc_example.SearchQuery, greetingsServer 
 }
 
 func (s *GreeterServer) Time(_ context.Context, accessToken *grpc_example.AccessToken) (*grpc_example.Greeting, error) {
-	if !authentication.Verify(accessToken) {
+	configAccessToken := grpc_config.AccessToken{}
+	if e := utils.ProtoCast(accessToken, &configAccessToken); e != nil {
+		return nil, e
+	}
+	if !authentication.Verify(&configAccessToken) {
 		return nil, errors.New("Authentication failed: JWT: " + accessToken.Jwt)
 	}
 	greeting := grpc_example.Greeting{
@@ -267,7 +273,11 @@ func (s *GreeterServer) ChangeTrustedKeys(stream grpc_example.GreeterService_Cha
 				_ = stream.Send(&response)
 				return nil
 			}
-			e = trusted.AddTrustedKey(request, nonce, toClientConnection(s))
+			configRequest := grpc_config.TrustedKeyRequest{}
+			if e := utils.ProtoCast(request, &configRequest); e != nil {
+				return e
+			}
+			e = trusted.AddTrustedKey(&configRequest, nonce, toClientConnection(s))
 			if e == nil {
 				status.Code = 200
 				status.Message = "OK"
@@ -302,7 +312,11 @@ func (s *GreeterServer) ChangeCredentials(stream grpc_example.GreeterService_Cha
 		if credentials.Signature == nil {
 			break
 		}
-		_ = authentication.SetCredentials(credentials, toClientConnection(s))
+		configCredentials := grpc_config.Credentials{}
+		if e := utils.ProtoCast(credentials, &configCredentials); e != nil {
+			return e
+		}
+		_ = authentication.SetCredentials(&configCredentials, toClientConnection(s))
 	}
 	empty = grpc_example.Empty{}
 	return stream.SendAndClose(&empty)

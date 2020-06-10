@@ -8,5 +8,5 @@ buildGoModule {
   src = nix-gitignore.gitignoreSource [] ./.;
   goPackagePath = "github.com/dendrite2go/archetype-go-axon";
   goDeps = ./deps.nix;
-  modSha256 = "0x36885x4ccv1m3ff7dcllgdvpx71a5zkfbcjznxl1rpbsa43lw2";
+  modSha256 = "0gf7m9ih2ib4mg01myxgivah1ss20zr774d1z729mjxh4k2riiph";
 }

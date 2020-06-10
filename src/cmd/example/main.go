@@ -5,24 +5,27 @@ import (
 	log "log"
 
 	uuid "github.com/google/uuid"
+	grpc "google.golang.org/grpc"
 
-	authentication "github.com/dendrite2go/archetype-go-axon/src/pkg/authentication"
 	cache_utils "github.com/dendrite2go/archetype-go-axon/src/pkg/cache_utils"
-	configuration_query "github.com/dendrite2go/archetype-go-axon/src/pkg/configuration_query"
 	example_api "github.com/dendrite2go/archetype-go-axon/src/pkg/example_api"
 	example_command "github.com/dendrite2go/archetype-go-axon/src/pkg/example_command"
 	example_query "github.com/dendrite2go/archetype-go-axon/src/pkg/example_query"
-	trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
-	utils "github.com/dendrite2go/archetype-go-axon/src/pkg/utils"
+	example_trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
+	authentication "github.com/dendrite2go/dendrite/src/pkg/authentication"
 	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
+	configuration_api "github.com/dendrite2go/dendrite/src/pkg/configuration_api"
+	configuration_query "github.com/dendrite2go/dendrite/src/pkg/configuration_query"
 	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
+	trusted "github.com/dendrite2go/dendrite/src/pkg/trusted"
+	utils "github.com/dendrite2go/dendrite/src/pkg/utils"
 )
 
 func main() {
 	log.Printf("\n\n\n")
 	log.Printf("Start Go Client")
 
-	trusted.Init()
+	example_trusted.Init()
 	authentication.Init()
 	for k, v := range trusted.GetTrustedKeys() {
 		log.Printf("Trusted key: %v: %v", k, v)
@@ -67,5 +70,10 @@ func main() {
 	defer utils.ReportError("Close queryHandlerConn", queryHandlerConn.Connection.Close)
 
 	// Listen to incoming gRPC requests
-	_ = axon_utils.Serve(clientConnection, example_api.RegisterWithServer)
+	_ = axon_utils.Serve(clientConnection, registerWithServer)
+}
+
+func registerWithServer(server *grpc.Server, conn *axon_utils.ClientConnection) {
+	example_api.RegisterWithServer(server, conn)
+	configuration_api.RegisterWithServer(server, conn)
 }

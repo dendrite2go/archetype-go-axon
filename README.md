@@ -102,13 +102,6 @@ Click it and try the method `/org.leialearns.grpc.example.GreeterService.Greet`.
 Again, the main prerequisite is docker and either an extracted ZIP or a
 clone of this project.
 
-The first step after that is to acquire a docker image that has Nix and Go tools.
-It will be pulled from docker hub automatically the first time you run `docker run` or `docker-compose up`.
-You can also build it yourself with:
-```
-[host]$ src/bin/docker-build.sh # Optional. It is also available on Docker Hub
-```
-
 The docker compose script that we are going to run later, needs some local settings.
 Create them from provided sample files for now:
 ```
@@ -117,7 +110,7 @@ Create them from provided sample files for now:
 
 You might need to update `deps.nix`:
 ```
-[host]$ docker run --rm -ti -v "${HOME}:${HOME}" -w "$(pwd)" jeroenvm/build-protoc bash
+[host]$ docker run --rm -ti -v "${HOME}:${HOME}" -w "$(pwd)" dendrite2go/build-protoc bash
 [container]# vgo2nix
 ```
 

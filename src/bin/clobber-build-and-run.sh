@@ -80,9 +80,6 @@ function waitForDockerComposeReady() {
 
     if "${DO_BUILD}"
     then
-        # Build docker image with nix and golang
-        "${BIN}/docker-build.sh"
-
         # Build server executables from Go sources
         "${BIN}/nix-build.sh"
 
