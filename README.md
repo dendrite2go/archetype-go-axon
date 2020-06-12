@@ -57,8 +57,6 @@ After that:
 * Use TLS
 * Add context management with proper canceling of operations
 * Support distributable segmented tracking event processors
-* Fix bug with disappearing connections when Go applications talk to
-  AxonServer via Envoy
 * Separate Docker image with build tools from Docker image for running the
 compiled commands
 * Provide CMD or PowerShell script to run Docker-in-Docker for Windows users
