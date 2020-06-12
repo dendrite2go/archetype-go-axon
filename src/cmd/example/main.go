@@ -32,7 +32,7 @@ func main() {
 		log.Printf("Trusted key: %v: %v", k, v)
 	}
 
-	host := "axon-server" // "example-proxy" or "axon-server"
+	host := "proxy"
 	port := 8124
 	clientConnection, streamClient := axon_utils.WaitForServer(host, port, "API")
 	defer utils.ReportError("Close clientConnection", clientConnection.Connection.Close)

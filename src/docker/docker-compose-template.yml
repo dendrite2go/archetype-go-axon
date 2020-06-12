@@ -53,7 +53,7 @@ services:
     depends_on:
       - axon-server
     #${PRESENT_VOLUMES}
-  example-proxy:
+  proxy:
     image: ${DOCKER_REPOSITORY}/example-proxy:${EXAMPLE_IMAGE_VERSION}
     networks:
       - example

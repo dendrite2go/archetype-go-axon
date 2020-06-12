@@ -65,6 +65,9 @@ static_resources:
               typed_config:
                 "@type": type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
                 stat_prefix: ingress_axon_http
+                stream_idle_timeout:
+                  seconds: 0
+                  nanos: 0
                 route_config:
                   name: local_axon_route
                   virtual_hosts:
