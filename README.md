@@ -49,7 +49,7 @@ Other features:
   * Todo: supply JWT in headers/metadata rather than payload
 * Cache projections
 * Extracted reusable code into a proper library that can be included as a dependency:
-  [dendrite](https://github.com/dendite2go/dendrite)
+  [dendrite](https://github.com/dendrite2go/dendrite)
 
 After that:
 
